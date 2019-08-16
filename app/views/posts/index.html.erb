@@ -1,1 +1,10 @@
 <h1> posts </h1>
+<ul>
+<% @posts.each do |post| %>
+<li>
+<h3><%= post.title %></h3>
+<br/>
+<%= post.content %>
+</li>
+<% end %>
+<ul>

@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if (user_id = session[:user_id])
-      @current_user ||= User.find_by(user_id)  
+      @current_user ||= User.find_by(id: user_id)  
     elsif (remember_token = cookies[:remember_token])
-      user = User.find_by(remember_token)
+      user = User.find_by(remember_token:remember_token)
       log_in(user)
       @current_user = user
     end
