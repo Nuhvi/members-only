@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   def create_new_token
-    new_token = SecureRandom.urlsafe_base64
     encrypted_token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
     self.remember_token = encrypted_token
   end
