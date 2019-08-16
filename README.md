@@ -1,6 +1,6 @@
 # Ruby on Rails Members Only application
 
-Ruby on Rails sample app excercise following [Michael Hartl](http://www.michaelhartl.com/) tutorial.
+Ruby on Rails project exercising authentication.
 
 ## Getting started
 
@@ -16,17 +16,20 @@ Next, migrate the database:
  rails db:migrate
 ```
 
-Finally, run the test suite to verify that everything is working correctly:
+Next, populate the database:
 
 ```console
- rails test
+ rails db:seed
 ```
 
-If the test suite passes, you'll be ready to run the app in a local server:
+You'll be ready to run the app in a local server:
 
 ```console
  rails server
 ```
 
-For more information, see the
-[*Ruby on Rails Tutorial* book](https://www.railstutorial.org/book).
+## Authors
+
+**[Quynh Yen Vo T.](https://github.com/themonster2015)**
+
+**[Nazeh](https://github.com/Nazeh)**
