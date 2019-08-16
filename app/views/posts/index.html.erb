@@ -3,8 +3,11 @@
 <% @posts.each do |post| %>
 <li>
 <h3><%= post.title %></h3>
-<br/>
-<%= post.content %>
-</li>
+<p> <%= post.content %> </p>
+<% user = User.find(post.user_id)%>
+<% if @current_user %>
+<p> author: <%= user.name %> </p>
+<% end %>
+</li><br/>
 <% end %>
 <ul>
