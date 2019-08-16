@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
   attr_accessor :remember_digest
   before_create :create_new_token
 
