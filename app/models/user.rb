@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
 
-
+  attr_accessor :encrypted_token
   before_create :create_new_token
 
   validates :name, presence: true, length: { minimum: 6 }
@@ -15,6 +15,6 @@ class User < ApplicationRecord
   def create_new_token
     new_token = SecureRandom.urlsafe_base64
     encrypted_token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
-    self.remember_encrypted = encrypted_token
+    self.remember_token = encrypted_token
   end
 end
