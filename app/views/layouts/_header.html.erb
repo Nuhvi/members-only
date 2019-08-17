@@ -1,3 +1,7 @@
-<%= link_to "log in", login_path %>
+<%= link_to "Home", root_url %>
+<% if logged_in?%>
 <%= link_to("signout", signout_path , method: :delete) %>
 <%= link_to "Create New Post", new_post_path  %>
+<% else %>
+<%= link_to "log in", login_path %>
+<% end %>

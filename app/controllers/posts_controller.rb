@@ -4,20 +4,29 @@ class PostsController < ApplicationController
   # before_action :signed_in?, only: [:new, :create]
   def index
     @posts = Post.all
-    @current_user = current_user
   end
 
   def new
-    @post = Post.new
+    if logged_in?
+      @post = Post.new
+    else
+      flash[:danger] = 'Please sign in first.'
+      redirect_to login_path
+    end
   end
 
   def create
-    post = current_user.posts.build(post_params)
-    if post.save
-      redirect_to root_url
+    if (user = current_user)
+      post = user.posts.build(post_params)
+      if post.save
+        flash[:success] = 'post saved successfully.'
+        redirect_to root_url
+      else
+        render :new
+      end
     else
-      p 'error creating post'
-      render :new
+      flash[:danger] = 'Please sign in first.'
+      redirect_to login_path
     end
   end
 
