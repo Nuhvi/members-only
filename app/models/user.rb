@@ -2,7 +2,6 @@
 
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  before_create :remember
 
   validates :name, presence: true, length: { minimum: 6 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
