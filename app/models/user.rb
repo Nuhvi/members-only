@@ -2,8 +2,7 @@
 
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  attr_accessor :remember_digest
-  before_create :create_new_token
+  before_create :remember
 
   validates :name, presence: true, length: { minimum: 6 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
@@ -11,8 +10,12 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true
 
-  def create_new_token
+  def remember
     encrypted_token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64)
-    self.remember_token = encrypted_token
+    update_attribute(:remember_token, encrypted_token)
+  end
+
+  def forget
+    update_attribute(:remember_token, nil)
   end
 end
