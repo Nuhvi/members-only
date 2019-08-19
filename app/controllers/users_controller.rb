@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcom #{@user.name}, now you can see posts authors and create your own!"
       redirect_to root_url
     else
-      flash[:danger] = 'please enter valid information.'
+      flash.now[:danger] = 'please enter valid information.'
       render 'new'
     end
   end
