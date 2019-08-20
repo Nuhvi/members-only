@@ -1,0 +1,13 @@
+<h1> posts </h1>
+<ul>
+    <% @posts.each do |post| %>
+        <li>
+            <h3><%= post.title %></h3>
+            <p> <%= post.content %> </p>
+            <% user = User.find(post.user_id)%>
+            <% if logged_in? %>
+                <p> author: <%= user.name %> </p>
+            <% end %>
+        </li><br/>
+    <% end %>
+<ul>
